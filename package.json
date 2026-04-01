@@ -10,7 +10,7 @@
     "test:watch": "vitest",
     "lint": "eslint src --ext .ts,.tsx",
     "typecheck": "tsc --noEmit",
-    "pack": "vite build && npm pack"
+    "pack": "vite build && tar -a -c -f plugin.zip dist framer.json"
   },
   "keywords": [
     "framer",
