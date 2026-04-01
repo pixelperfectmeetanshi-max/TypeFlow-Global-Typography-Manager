@@ -18,5 +18,7 @@
     "type": "runCommand",
     "command": "git add -A && git commit -m \"auto: update files\" && git push",
     "timeout": 30
-  }
+  },
+  "workspaceFolderName": "TypeFlow – Global Typography Manager",
+  "shortName": "auto-git-push"
 }
