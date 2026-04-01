@@ -10,7 +10,7 @@
     "test:watch": "vitest",
     "lint": "eslint src --ext .ts,.tsx",
     "typecheck": "tsc --noEmit",
-    "pack": "vite build && powershell -Command \"Remove-Item plugin.zip -ErrorAction SilentlyContinue; Compress-Archive -Path dist, framer.json -DestinationPath plugin.zip\""
+    "pack": "vite build && powershell -Command \"Remove-Item plugin.zip -ErrorAction SilentlyContinue; Compress-Archive -Path dist, framer.json, icon.png -DestinationPath plugin.zip\""
   },
   "keywords": [
     "framer",
