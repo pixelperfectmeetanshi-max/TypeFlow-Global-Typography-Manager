@@ -1,0 +1,15 @@
+{
+  "id": "tyflow",
+  "name": "TypeFlow",
+  "description": "Comprehensive typography management for Framer - scan, preview, and apply typography styles across your projects",
+  "version": "1.0.0",
+  "icon": "public/icon.png",
+  "main": "dist/index.js",
+  "modes": ["canvas"],
+  "permissions": [
+    "selection",
+    "elements",
+    "fonts",
+    "storage"
+  ]
+}

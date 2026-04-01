@@ -1,0 +1,23 @@
+# TypeFlow Marketplace Preview Placeholder
+
+This file is a placeholder for the marketplace preview image.
+
+## Requirements
+- Format: PNG
+- Recommended size: 1200x630 pixels (standard marketplace preview)
+- Should showcase the plugin UI and key features
+
+## Suggested Content
+- Screenshot of the TypeFlow plugin interface
+- Highlight key features:
+  - Font scanning panel
+  - Font selector with search
+  - Size controls (font size, line height, letter spacing)
+  - Preview toggle
+  - Apply button
+- Include the TypeFlow logo/branding
+- Add descriptive text overlay highlighting main features
+
+## To Replace
+Replace this placeholder with an actual preview.png file in the same directory.
+This image will be displayed in the Framer plugin marketplace.

@@ -1,0 +1,18 @@
+# TypeFlow Plugin Icon Placeholder
+
+This file is a placeholder for the plugin icon.
+
+## Requirements
+- Format: PNG
+- Recommended size: 128x128 pixels (or 256x256 for high-DPI)
+- Background: Transparent or solid color
+- Style: Should represent typography/fonts (e.g., letter "T", font icon, or typography-related symbol)
+
+## Suggested Design
+- A stylized "T" or "Tf" representing TypeFlow
+- Clean, modern design that fits Framer's aesthetic
+- Consider using a gradient or solid color that stands out in the plugin panel
+
+## To Replace
+Replace this placeholder with an actual icon.png file in the same directory.
+The framer.json references this icon at "public/icon.png".
