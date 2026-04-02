@@ -7,7 +7,7 @@
  * **Validates: Requirements 8.1, 8.2, 8.4, 9.1, 9.4**
  */
 
-import React, { useState, useCallback, Component, ErrorInfo, ReactNode } from 'react';
+import React, { useState, useCallback, Component, ErrorInfo, ReactNode, useEffect } from 'react';
 import { framer } from 'framer-plugin';
 import './styles/global.css';
 
@@ -145,6 +145,42 @@ export function App(): React.ReactElement {
   // Derived state
   const selectedFont = currentStyle.fontFamily;
   const selectedWeight = currentStyle.fontWeight;
+
+  // Theme detection - sync with Framer's dark/light mode
+  useEffect(() => {
+    const updateTheme = async () => {
+      try {
+        // Get current theme from Framer
+        const mode = await framer.getMode();
+        const isDark = mode === 'dark';
+        
+        // Apply theme to document
+        document.documentElement.setAttribute('data-framer-theme', isDark ? 'dark' : 'light');
+        document.body.setAttribute('data-framer-theme', isDark ? 'dark' : 'light');
+        
+        if (isDark) {
+          document.documentElement.classList.add('framer-dark');
+          document.body.classList.add('framer-dark');
+        } else {
+          document.documentElement.classList.remove('framer-dark');
+          document.body.classList.remove('framer-dark');
+        }
+      } catch (e) {
+        // Fallback: check system preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-framer-theme', prefersDark ? 'dark' : 'light');
+      }
+    };
+
+    updateTheme();
+
+    // Listen for system theme changes as fallback
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = () => updateTheme();
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   /**
    * Gets fonts from the current selection in Framer.

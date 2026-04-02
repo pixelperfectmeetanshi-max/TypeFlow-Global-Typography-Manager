@@ -8,24 +8,24 @@
    CSS Custom Properties (Design Tokens)
    ============================================ */
 :root {
-  /* Colors - Primary (using Framer tint for theme compatibility) */
-  --color-primary: var(--framer-color-tint, #6c5ce7);
-  --color-primary-hover: var(--framer-color-tint-dark, #5a4bd1);
-  --color-primary-active: var(--framer-color-tint-dark, #4c3fb8);
-  --color-primary-light: var(--framer-color-tint-dimmed, rgba(108, 92, 231, 0.08));
+  /* Colors - Primary */
+  --color-primary: #6c5ce7;
+  --color-primary-hover: #5a4bd1;
+  --color-primary-active: #4c3fb8;
+  --color-primary-light: rgba(108, 92, 231, 0.08);
 
-  /* Colors - Neutral (using Framer bg tokens for dark/light mode) */
-  --color-background: var(--framer-color-bg, #f5f3ff);
-  --color-surface: var(--framer-color-bg-secondary, #ffffff);
-  --color-surface-hover: var(--framer-color-bg-tertiary, #f0edff);
-  --color-border: var(--framer-color-divider, #e2ddf5);
-  --color-border-light: var(--framer-color-divider, #ece8f8);
+  /* Colors - Neutral (Light Mode Default) */
+  --color-background: #f5f3ff;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f0edff;
+  --color-border: #e2ddf5;
+  --color-border-light: #ece8f8;
 
-  /* Colors - Text (using Framer text tokens for dark/light mode) */
-  --color-text-primary: var(--framer-color-text, #1e1b3a);
-  --color-text-secondary: var(--framer-color-text-secondary, #6e6b8a);
-  --color-text-muted: var(--framer-color-text-tertiary, #a09cb8);
-  --color-text-inverse: var(--framer-color-text-reversed, #ffffff);
+  /* Colors - Text (Light Mode Default) */
+  --color-text-primary: #1e1b3a;
+  --color-text-secondary: #6e6b8a;
+  --color-text-muted: #a09cb8;
+  --color-text-inverse: #ffffff;
 
   /* Colors - Semantic */
   --color-success: #22c55e;
@@ -77,6 +77,59 @@
 }
 
 /* ============================================
+   Dark Mode - Framer Theme Detection
+   ============================================ */
+[data-framer-theme="dark"],
+[data-framer-theme="dark"] :root,
+.framer-dark,
+.framer-dark :root {
+  --color-primary: #a29bfe;
+  --color-primary-hover: #6c5ce7;
+  --color-primary-active: #5a4bd1;
+  --color-primary-light: rgba(162, 155, 254, 0.15);
+
+  --color-background: #1a1a2e;
+  --color-surface: #252542;
+  --color-surface-hover: #2d2d4a;
+  --color-border: #3d3d5c;
+  --color-border-light: #333355;
+
+  --color-text-primary: #f0f0f5;
+  --color-text-secondary: #a0a0b8;
+  --color-text-muted: #6e6e8a;
+  --color-text-inverse: #1a1a2e;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 3px 10px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 6px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Also support prefers-color-scheme as fallback */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #a29bfe;
+    --color-primary-hover: #6c5ce7;
+    --color-primary-active: #5a4bd1;
+    --color-primary-light: rgba(162, 155, 254, 0.15);
+
+    --color-background: #1a1a2e;
+    --color-surface: #252542;
+    --color-surface-hover: #2d2d4a;
+    --color-border: #3d3d5c;
+    --color-border-light: #333355;
+
+    --color-text-primary: #f0f0f5;
+    --color-text-secondary: #a0a0b8;
+    --color-text-muted: #6e6e8a;
+    --color-text-inverse: #1a1a2e;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 3px 10px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 6px 24px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ============================================
    Base Styles
    ============================================ */
 *,
@@ -91,11 +144,14 @@ html, body {
   padding: 0;
   overflow: hidden;
   height: 100%;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
 }
 
 #root {
   height: 100%;
   overflow: hidden;
+  background-color: var(--color-background);
 }
 
 /* Custom thin scrollbars */
@@ -1475,27 +1531,3 @@ html, body {
 }
 
 
-
-/* ============================================
-   Framer Dark/Light Mode Overrides
-   ============================================ */
-
-/* Dark mode specific adjustments */
-[data-framer-theme="dark"] {
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 3px 10px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 6px 24px rgba(0, 0, 0, 0.5);
-}
-
-[data-framer-theme="dark"] .color-picker-popup {
-  background: var(--color-surface);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-}
-
-[data-framer-theme="dark"] ::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.15);
-}
-
-[data-framer-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.25);
-}
